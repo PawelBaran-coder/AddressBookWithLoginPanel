@@ -633,8 +633,6 @@ int main()
                 {
                     memberId = deleteMember(people);
                     fromVectorToFile(people, memberId);
-
-                    //lastOneMemberId = fromFileToVector(people, userId);
                 }
                 else if (choice == '6')
                 {
