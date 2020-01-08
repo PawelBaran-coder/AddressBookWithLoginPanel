@@ -133,7 +133,7 @@ void fromVectorToFileUsers(vector <User> &users)
     const char separator = '|';
     fstream fileUsers;
 
-    fileUsers.open("Uzytkownicy.txt", ios::out | ios::app);
+    fileUsers.open("Uzytkownicy.txt", ios::out);
     if (fileUsers.good())
     {
         for ( vector<User>::iterator itr = users.begin(), finish = users.end(); itr != finish; ++itr )
