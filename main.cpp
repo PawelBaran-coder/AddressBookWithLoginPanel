@@ -97,7 +97,7 @@ int fromFileToVector(vector <Person> &people, int userId)
     int lastOneMemberId = 0;
 
     fstream file;
-    file.open("KsiazkaAdresowa.txt",ios::in);
+    file.open("KsiazkaAdresowa.txt",ios::in | ios::app);
 
     if (file.good()==false)
     {
@@ -133,7 +133,7 @@ void fromVectorToFileUsers(vector <User> &users)
     const char separator = '|';
     fstream fileUsers;
 
-    fileUsers.open("Uzytkownicy.txt", ios::out);
+    fileUsers.open("Uzytkownicy.txt", ios::out | ios::app);
     if (fileUsers.good())
     {
         for ( vector<User>::iterator itr = users.begin(), finish = users.end(); itr != finish; ++itr )
@@ -154,7 +154,7 @@ int fromFileToVectorUsers(vector <User> &users, int numberOfUsers)
     string line;
 
     fstream fileUsers;
-    fileUsers.open("Uzytkownicy.txt",ios::in);
+    fileUsers.open("Uzytkownicy.txt",ios::in | ios::app);
 
     if (fileUsers.good()==false)
     {
@@ -447,6 +447,7 @@ int deleteMember(vector <Person> &people)
             }
             if (choice == 'n')
             {
+                numberToDelete = 0;
                 return numberToDelete;
             }
         }
@@ -455,6 +456,7 @@ int deleteMember(vector <Person> &people)
     cout << "Nie ma takiej osoby" << endl;
     Sleep(1000);
 
+    numberToDelete = 0;
     return numberToDelete;
 }
 
@@ -481,6 +483,7 @@ int editData (vector<Person>&people)
         {
             cout << "Nie ma osoby o takim nr id!" << endl;
             system("pause");
+            memberId = 0;
             return memberId;
         }
     }
@@ -566,9 +569,6 @@ int main()
     fstream file;
     fstream fileUsers;
 
-    file.open("KsiazkaAdresowa.txt",ios::in  | ios::app);
-    fileUsers.open("Uzytkownicy.txt",ios::in  | ios::app);
-
     numberOfUsers = fromFileToVectorUsers(users,numberOfUsers);
 
     while(1)
@@ -599,7 +599,6 @@ int main()
             lastOneMemberId = fromFileToVector(people, userId);
             while(true)
             {
-
                 system("cls");
                 cout << "1. Dodaj osobe" << endl;
                 cout << "2. Wyszukaj po imieniu" <<endl;
@@ -652,8 +651,6 @@ int main()
                 }
             }
         }
-        file.close();
-        fileUsers.close();
     }
 
     return 0;
