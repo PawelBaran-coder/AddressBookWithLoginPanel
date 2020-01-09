@@ -18,6 +18,16 @@ struct User
     string login, password;
 };
 
+void displayVectorPeople(vector <Person> people, vector <Person>::iterator itr)
+{
+    cout << itr->id << endl;
+    cout << itr->name << endl;
+    cout << itr->lastName << endl;
+    cout << itr->phoneNumber << endl;
+    cout << itr->emailAddress << endl;
+    cout << itr->address << endl;
+}
+
 string convwertIntToString(int number)
 {
     ostringstream ss;
@@ -352,12 +362,7 @@ void nameDisplay(vector <Person> people)
     {
         if(nameForSearch == itr->name)
         {
-            cout << itr->id << endl;
-            cout << itr->name << endl;
-            cout << itr->lastName << endl;
-            cout << itr->phoneNumber << endl;
-            cout << itr->emailAddress << endl;
-            cout << itr->address << endl;
+           displayVectorPeople(people, itr);
             howManyNames += 1;
         }
         else
@@ -385,12 +390,7 @@ void lastNameDisplay(vector <Person> people)
     {
         if(lastNameForSearch == itr->lastName)
         {
-            cout << itr->id << endl;
-            cout << itr->name << endl;
-            cout << itr->lastName << endl;
-            cout << itr->phoneNumber << endl;
-            cout << itr->emailAddress << endl;
-            cout << itr->address << endl;
+            displayVectorPeople(people, itr);
             howManyNames += 1;
         }
         else
@@ -410,12 +410,7 @@ void everyoneDisplay(vector <Person> people)
     system("cls");
     for ( vector<Person>::iterator itr = people.begin(), finish = people.end(); itr != finish; ++itr )
     {
-        cout << itr->id << endl;
-        cout << itr->name << endl;
-        cout << itr->lastName << endl;
-        cout << itr->phoneNumber << endl;
-        cout << itr->emailAddress << endl;
-        cout << itr->address << endl;
+        displayVectorPeople(people, itr);
     }
     system("pause");
 }
